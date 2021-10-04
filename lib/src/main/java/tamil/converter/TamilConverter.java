@@ -4,7 +4,7 @@
 package tamil.converter;
 
 public class TamilConverter {
-    public String convertToTamilScript(String transliteration) {
+    public String toTamilScript(String transliteration) {
         if("a".equals(transliteration)){
             return "அ";
         }

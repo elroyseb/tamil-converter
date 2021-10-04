@@ -4,19 +4,21 @@
 package tamil.converter;
 
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+
+import static org.hamcrest.MatcherAssert.*;
+import static org.hamcrest.Matchers.*;
 
 class TamilConverterTest {
 
     @Test
     void aConvert() {
         TamilConverter converter = new TamilConverter();
-        assertEquals("அ", converter.convertToTamilScript("a"));
+        assertThat(converter.toTamilScript("a"), is("அ"));
     }
 
     @Test
     void iConvert() {
         TamilConverter converter = new TamilConverter();
-        assertEquals("இ", converter.convertToTamilScript("i"));
+        assertThat(converter.toTamilScript("i"), is("இ"));
     }
 }

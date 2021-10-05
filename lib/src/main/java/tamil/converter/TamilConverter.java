@@ -3,11 +3,28 @@
  */
 package tamil.converter;
 
+import java.util.ArrayList;
+import java.util.Map;
+
 public class TamilConverter {
+    final static Map<String, String> tamilScriptMap = Map.ofEntries(listOfEntries("a", "அ", "A", "ஆ", "i", "இ", "I", "ஈ", "u", "உ", "U", "ஊ", "e", "எ", "E", "ஏ", "ai", "ஐ", "o", "ஒ", "O", "ஓ", "au", "ஔ"));
+
+    @SuppressWarnings("unchecked")
+    private static Map.Entry<String, String>[] listOfEntries(String ... keyOrValues){
+        checkArgumentsValid(keyOrValues);
+
+        var entries = new ArrayList<Map.Entry<String, String>>();
+        for(int i = 0; i < keyOrValues.length; i += 2)
+            entries.add(Map.entry(keyOrValues[i], keyOrValues[i + 1]));
+
+        return (Map.Entry<String, String>[]) entries.toArray(new Map.Entry[0]);
+    }
+
+    private static void checkArgumentsValid(String ... keyOrValues) {
+        if(keyOrValues.length % 2 != 0)
+            throw new IllegalArgumentException("Should have an even number of arguments");
+    }
     public String toTamilScript(String transliteration) {
-        if("a".equals(transliteration)){
-            return "அ";
-        }
-        return "இ";
+        return tamilScriptMap.get(transliteration);
     }
 }

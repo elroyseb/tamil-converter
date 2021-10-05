@@ -11,14 +11,19 @@ import static org.hamcrest.Matchers.*;
 class TamilConverterTest {
 
     @Test
-    void aConvert() {
+    void testVowelConversion() {
         TamilConverter converter = new TamilConverter();
         assertThat(converter.toTamilScript("a"), is("அ"));
-    }
-
-    @Test
-    void iConvert() {
-        TamilConverter converter = new TamilConverter();
+        assertThat(converter.toTamilScript("A"), is("ஆ"));
         assertThat(converter.toTamilScript("i"), is("இ"));
+        assertThat(converter.toTamilScript("I"), is("ஈ"));
+        assertThat(converter.toTamilScript("u"), is("உ"));
+        assertThat(converter.toTamilScript("U"), is("ஊ"));
+        assertThat(converter.toTamilScript("e"), is("எ"));
+        assertThat(converter.toTamilScript("E"), is("ஏ"));
+        assertThat(converter.toTamilScript("ai"), is("ஐ"));
+        assertThat(converter.toTamilScript("o"), is("ஒ"));
+        assertThat(converter.toTamilScript("O"), is("ஓ"));
+        assertThat(converter.toTamilScript("au"), is("ஔ"));
     }
 }
